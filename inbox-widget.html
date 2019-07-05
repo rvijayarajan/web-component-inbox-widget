@@ -1,0 +1,15 @@
+<wc-cards-customized cards-config="$ctrl.config">
+	<img src="{{$ctrl.config.topImage}}" class="card-img-top" alt="Top Image Unavailable. Please check source url." ng-if="$ctrl.config.topImage">
+  	<h5 class="card-title" ng-if="$ctrl.config.title">{{$ctrl.config.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted" ng-if="$ctrl.config.subTitle">{{$ctrl.config.subTitle}}</h6>
+    <p class="card-text" ng-if="$ctrl.config.bodyText">{{$ctrl.config.bodyText}}</p>
+    <a href="{{link.href}}" class="card-link" ng-repeat="link in $ctrl.config.cardLinks track by $index" ng-if="$ctrl.config.cardLinks.length>0">{{link.text}}</a>
+    <img src="{{$ctrl.config.bottomImage}}" class="card-img-top" alt="Bottom Image Unavailable. Please check source url." ng-if="$ctrl.config.bottomImage">
+    <ul class="list-group list-group-flush" ng-if="$ctrl.config.cardDetails.length>0">
+    	<li class="list-group-item" ng-repeat="detail in $ctrl.config.cardDetails track by $index" 
+    		ng-mouseenter="rowHover = true" ng-mouseleave="rowHover = false" ng-click="$ctrl.config.rowClickFn(detail)" style="cursor: pointer;">
+    		<i class="icon" ng-class="{'ion-md-mail': !rowHover, 'ion-md-mail-open': rowHover}"></i>
+    		{{detail.text}}
+    	</li>
+    </ul>
+</wc-cards-customized>
